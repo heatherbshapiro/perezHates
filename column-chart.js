@@ -82,14 +82,6 @@ function columnChart() {
                 })
             ;
             
-    g.append("text")
-        .attr("x", (width / 2))             
-        .attr("y", 0 - (margin.top / 2))
-        .attr("text-anchor", "middle")  
-        .style("font-size", "24px") 
-        .style("font-weight", "bolder")
-        // .style("text-decoration", "underline")  
-        .text("Who did Perez like the Most at the Grammys");
     
     // zero line
      g.select(".x.axis.zero")
