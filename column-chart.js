@@ -1,6 +1,6 @@
 function columnChart() {
   var margin = {top: 100, right: 100, bottom: 205, left: 50},
-      width = 420,
+      width = 960,
       height = 600,
       xRoundBands = 0.2,
       xValue = function(d) { return d[0]; },
@@ -9,6 +9,7 @@ function columnChart() {
       yScale = d3.scale.linear(),
       yAxis = d3.svg.axis().scale(yScale).orient("left"),
       xAxis = d3.svg.axis().scale(xScale);
+      
       
 
   function chart(selection) {
@@ -42,6 +43,7 @@ function columnChart() {
         .html(function(d) {
             return xValue(d)+" <span style='color:red'>" + parseFloat(yValue(d)).toFixed(3) + "</span> " + '<A HREF="http://twitter.com/' + xValue(d).trim()+'"><img src="https://twitter.com/'+xValue(d).trim()+'/profile_image?size=original " alt="Smiley face" height="42" width="42">';
         })
+        
       
       // Otherwise, create the skeletal chart.
       var gEnter = svg.enter().append("svg").append("g");
@@ -52,11 +54,17 @@ function columnChart() {
       
       // Update the outer dimensions.
       svg .attr("width", width)
-          .attr("height", height);
+          .attr("height", height)
+          .attr("style", "outline: 2px solid hotpink;")
+      
+          
+          
           
       // Update the inner dimensions.
+      
       var g = svg.select("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        //   .attr("background-color", );
       g.call(tip)
      // Update the bars.
       var bar = svg.select(".bars").selectAll(".bar").data(data);
@@ -67,7 +75,7 @@ function columnChart() {
           .attr("y", function(d, i) { return d[1] < 0 ? Y0() : Y(d); })
           .attr("width", xScale.rangeBand())
           .attr("height", function(d, i) { return Math.abs( Y(d) - Y0() ); })
-          .on('mouseover', tip.show)
+          .on('mouseover', tip.show);
         //   .on('mouseout', tip.hide);
     // x axis at the bottom of the chart
      g.select(".x.axis")
@@ -79,10 +87,15 @@ function columnChart() {
             .attr("dy", ".15em")
             .attr("transform", function(d) {
                 return "translate(0,85),rotate(-65)" 
-                })
-            ;
+                });
             
-    
+    g.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 - (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "16px") 
+        .style("text-decoration", "underline")  
+        .text("Pere Hilton's Sentiment Towards Celebs at #TheGrammys");
     // zero line
      g.select(".x.axis.zero")
         .attr("transform", "translate(0," + Y0() + ")")

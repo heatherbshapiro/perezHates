@@ -8,6 +8,19 @@
     <script type="text/javascript" src="column-chart.js"></script>
 <style>
 
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+    background-color: rgb(250,204,206);font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 36px;
+
+    
+}
+h1 {
+    background-color: white;
+}
+
 .chart rect {
   stroke: white;
   fill-opacity: .6;
@@ -68,13 +81,22 @@
   
   </head>
   <body>
-   <div style="text-align: center;">
+   <div style="text-align: center;position: fixed;top:0;right:0;left:0;background-color: white;margin-bottom: 0px;border: 3px solid rgb(209, 204, 204); width:100%;">
        <h1> Check out who Perez liked and disliked the most at this year's Grammys!</h1>
   </div>
+  <br><br><br>
   <div style="width: 100%; overflow: hidden;">
-  <div id="example" style="width: 600px; float: left;"></div>
+  <div style="width:100%;float:left;background-color:rgb(254,240,240);height:680px;border: 1px solid rgb(209, 204, 204);"> <br>
+  <div id="example" style="width: 960px; float: left;background-color: white;height:610px;padding-left:10px"></div>
+  <div style="margin-left: 70%;height:680px;">
+ <img src="prez.png" style="
+    width: 90%;
+    margin-top: 50px;
+    border: 2px solid hotpink;
+"/>
+</div>
 
-<div style="margin-left: 65%;">
+<div style="margin-left: 65%;background-color: rgb(254,240,240);border: 1px solid rgb(209, 204, 204);height:610px;">
  <img src="prez.png" style="
     width: 90%;
     margin-top: 50px;
@@ -89,6 +111,7 @@ d3.text("data.txt", function(text) {
     .call(columnChart()
       .width(960)
       .height(600)
+    //   .color(black)
       .x(function(d, i) { return d[0]; })
       .y(function(d, i) { return d[1]; }));
 });
