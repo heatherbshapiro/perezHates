@@ -109,7 +109,7 @@
        <h1> Check out who Perez liked and disliked the most at this year's Grammys!</h1>
   </div><br><br><br>
     
-   <div style="width:1200px;background-color:rgb(254,240,240);height:700px;;border: 1px solid rgb(209, 204, 204);"> <br>
+   <div style="width:1200px;background-color:rgb(254,240,240);height:920px;border: 1px solid rgb(209, 204, 204);"> <br>
   <div id="example" style="width: 810px; float: left;background-color: white;height:610px;padding-left:0px;padding-top:5px;"></div>
   <div style="margin-left: 69%;">
  <img src="prez.png" style="
@@ -117,7 +117,21 @@
     margin-top: 70px;
     border: 2px solid hotpink;"/>
 </div>
+<br>
+<br>
+<br>
+<div style = "background-color:white;text-align: center;width:98%;margin-left:10px;">
+<h1>How was this done?</h1>
+<p> I love looking at pop culture, so I put together this site that goes through all of Perez Hilton's Tweets about The Grammys. 
+    I used the Twitter API within R to search for all of the people that were mentioned or tagged in Perez's comments. 
+    I then used a sentiment analysis function in R to assess how positive or negative these statements were for each person. 
+    Most people received scores of 0, which means that the comments were neutral about them. 
+    The ones left in the chart display how negative or positive Perez was towards them during this award season. A score above 0 is positive and below is negative.
+    
+    I created the Wordcloud using the wordcloud package in python and a picture of Perez that I found online.
+</p>
 </div>
+
         
     <!-- /.container -->
 
