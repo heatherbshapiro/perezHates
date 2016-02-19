@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="http://d3js.org/d3.v2.min.js?2.10.0"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script type="text/javascript" src="../d3.v2.js" charset="utf-8" ></script>
+    <script type="text/javascript" src="column-chart.js"></script>
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+
+    @import url(//fonts.googleapis.com/css?family=Open+Sans);
+
+    body {
+        background-color: rgb(250,204,206);font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        line-height: 36px;
+
+        
+    }
+    h1 {
+        background-color: white;
+    }
+
+    .chart rect {
+    stroke: white;
+    fill-opacity: .6;
+    fill: steelblue;
+
+    }
+    .bar.positive {
+    fill: steelblue;
+    }
+
+    .bar.negative {
+    fill: brown;
+    }
+    .bar:hover {
+    fill: orange;
+    }
+
+    .axis text {
+    font-weight: bolder;
+    font: 15px sans-serif;
+    }
+
+    .axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+    }
+
+    .d3-tip {
+    line-height: 1;
+    font-weight: bold;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
+    }
+
+    /* Creates a small triangle extender for the tooltip */
+    .d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+    }
+
+    /* Style northward tooltips differently */
+    .d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+
+    <!-- Page Content -->
+<div class="container">
+    <div style="text-align: center;position: fixed;top:0;right:0;left:0;background-color: white;margin-bottom: 0px;border: 3px solid rgb(209, 204, 204); width:100%;">
+       <h1> Check out who Perez liked and disliked the most at this year's Grammys!</h1>
+  </div><br><br><br>
+    
+   <div style="width:1200px;background-color:rgb(254,240,240);height:700px;;border: 1px solid rgb(209, 204, 204);"> <br>
+  <div id="example" style="width: 810px; float: left;background-color: white;height:610px;padding-left:0px;padding-top:5px;"></div>
+  <div style="margin-left: 69%;">
+ <img src="prez.png" style="
+    width: 98%;
+    margin-top: 70px;
+    border: 2px solid hotpink;"/>
+</div>
+</div>
+        
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+
+d3.text("data.txt", function(text) {
+    var data = JSON.parse(d3.csv.parseRows(text))
+    d3.select("#example")
+  .datum(data)
+    .call(columnChart()
+       .width(810)
+       .height(600)
+    //   .color(black)
+      .x(function(d, i) { return d[0]; })
+      .y(function(d, i) { return d[1]; }));
+});
+
+
+</script>
+</div>
+
+</body>
+
+</html>

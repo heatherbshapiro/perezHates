@@ -1,6 +1,6 @@
 function columnChart() {
-  var margin = {top: 100, right: 100, bottom: 205, left: 50},
-      width = 960,
+  var margin = {top: 100, right: 00, bottom: 205, left: 50},
+      width = 820,
       height = 600,
       xRoundBands = 0.2,
       xValue = function(d) { return d[0]; },
