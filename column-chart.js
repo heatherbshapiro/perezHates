@@ -94,7 +94,7 @@ function columnChart() {
         .attr("y", 0 - (margin.top / 2))
         .attr("text-anchor", "middle")  
         .style("font-size", "24px") 
-        .text("Pere Hilton's Sentiment Towards Celebs at #TheGrammys");
+        .text("Perez Hilton's Sentiment Towards Celebs at #TheGrammys");
     // zero line
      g.select(".x.axis.zero")
         .attr("transform", "translate(0," + Y0() + ")")
